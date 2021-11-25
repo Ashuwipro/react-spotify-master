@@ -46,7 +46,7 @@ const Topbar = props => (
       padding: 20px;
     `}
   >
-    <input
+    {/* <input
       type="search"
       css={css`
         width: 300px;
@@ -55,7 +55,7 @@ const Topbar = props => (
       `}
       placeholder="Search songs, artists"
       onChange={e => console.log(e.target.value)}
-    />
+    /> */}
   </div>
 )
 

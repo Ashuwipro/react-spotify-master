@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core'
 import { StoreContext } from './index'
 import Modal from './Modal'
 import Toast from './Toast'
-// import logo from '../img/spotify-white.png'
+const LazyChart = React.lazy(() => import('./Charts'))
 
 const Sidebar = () => {
   const [sidebarState, setState] = useState({
@@ -77,6 +77,31 @@ const Sidebar = () => {
         toast={sidebarState.toast}
         close={() => setState({ ...sidebarState, toast: '' })}
       />
+      <React.Suspense fallback="Loading...">
+        <li onClick={handleModal}>
+          <span>About Us</span>
+        </li>
+
+        <Modal show={sidebarState.modal} close={handleModal}>
+          <form>
+            <div className="title">Charts</div>
+
+            <div className="content-wrap">
+              {/* <input
+              type="text"
+              placeholder="My Playlist"
+              ref={playlistRef}
+              required
+            /> */}
+              <LazyChart />
+
+              <br />
+
+              <button type="submit">Lazy Loading</button>
+            </div>
+          </form>
+        </Modal>
+      </React.Suspense>
     </ul>
   )
 }
