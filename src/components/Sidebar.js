@@ -4,6 +4,7 @@ import { css, jsx } from '@emotion/core'
 import { StoreContext } from './index'
 import Modal from './Modal'
 import Toast from './Toast'
+import Charts from './Charts'
 const LazyChart = React.lazy(() => import('./Charts'))
 
 const Sidebar = () => {
@@ -36,9 +37,7 @@ const Sidebar = () => {
   return (
     <ul className="Sidebar" css={CSS}>
       <img src="https://static.vecteezy.com/system/resources/thumbnails/000/568/664/small/vector60-1117-01.jpg" />
-
       <li className="library">Library</li>
-
       {playlists.map(list => (
         <li
           key={list}
@@ -48,12 +47,10 @@ const Sidebar = () => {
           {list}
         </li>
       ))}
-
       <li className="new-playlist" onClick={handleModal}>
         <i className="fa fa-plus-circle" />
         <span>New Playlist</span>
       </li>
-
       <Modal show={sidebarState.modal} close={handleModal}>
         <form onSubmit={addPlaylist}>
           <div className="title">New Playlist</div>
@@ -72,7 +69,6 @@ const Sidebar = () => {
           </div>
         </form>
       </Modal>
-
       <Toast
         toast={sidebarState.toast}
         close={() => setState({ ...sidebarState, toast: '' })}
@@ -82,25 +78,24 @@ const Sidebar = () => {
           <span>About Us</span>
         </li>
 
-        <Modal show={sidebarState.modal} close={handleModal}>
+        {/* <Modal show={sidebarState.modal} close={handleModal}>
           <form>
             <div className="title">Charts</div>
 
-            <div className="content-wrap">
-              {/* <input
-              type="text"
-              placeholder="My Playlist"
-              ref={playlistRef}
-              required
-            /> */}
-              <LazyChart />
+            <div className="content-wrap"> */}
+        {/* <input
+                type="text"
+                placeholder="My Playlist"
+                ref={playlistRef}
+                required
+              /> */}
+        {/* <LazyChart /> */}
 
-              <br />
-
+        {/* <br />
               <button type="submit">Lazy Loading</button>
             </div>
           </form>
-        </Modal>
+        </Modal> */}
       </React.Suspense>
     </ul>
   )
